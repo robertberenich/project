@@ -11,40 +11,24 @@ namespace project
     {
         static void Main(string[] args)
         {
-            string password = Console.ReadLine();
-            char[] notAllowedSymbols = { '!', '#', '$', '%', '&', '(', ')', '*', ',', '+', '-' };
-            int num = notAllowedSymbols.Length;
-            bool test = false;
-            for (int i = 0; i < password.Length; i++)
-            {
-                for (int j = 0; j < num; j++)
-                {
-                    if (password.Contains(notAllowedSymbols[j]))
-                    {
-                        Console.WriteLine("Invalid");
-                        test = true;
-                        break;
-                    }
+            string name = Console.ReadLine();
 
-                }
-                if (test == true) break;
+            if (name.Length>10)
+            {
+                name = name.Remove(10);
             }
 
-            /*You are creating an authentication system.
-The password shouldn't contain any of these symbols:
-char[] notAllowedSymbols = { '!', '#', '$', '%', '&', '(', ')', '*', ',', '+', '-' };
-            The given program takes the password as input.
+            Console.WriteLine(name);
+            //your code goes here
 
-            Task
-Write a program to output "Invalid", if it contains any disallowed symbols.
-If the password requirement is satisfied, program shouldn't output anything.
+            /*In the RPG game you are playing, the name of the player - character should not exceed 10 characters in length.
+            Write a program to take the player - character as input, and abbreviate it beginning at the 10th character if the name is longer than 10 characters.Output the final result.
 
-Sample Input
-yl1893!dm$
+            Sample Input
+            DragonBorn126
 
-Sample Output
-Invalid*/
-
+            Sample Output
+            DragonBorn*/
         }
     }
 }
