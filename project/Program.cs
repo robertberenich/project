@@ -11,38 +11,47 @@ namespace project
     {
         static void Main(string[] args)
         {
-            double num1 = Convert.ToDouble(Console.ReadLine());
-            double num2 = Convert.ToDouble(Console.ReadLine());
+            MusicGenres genres = new MusicGenres();
 
-            Avg avg = new Avg(num1, num2);
+            int count = 0;
+            while (count < 5)
+            {
+                genres[count] = Console.ReadLine();
+                count++;
+            }
 
-            Console.WriteLine(avg.GetAvg());
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine("Following: " + genres[i]);
+            }
         }
     }
-
-    class Avg
+    class MusicGenres
     {
-        double num1;
-        double num2;
+        private string[] genres = new string[5];
 
-        public Avg(double num1, double num2)
+        public string this [int index]
         {
-            this.num1 = num1;
-            this.num2 = num2;
+            get { return genres[index];}
+            set { genres[index] = value;}
         }
 
-        public double GetAvg()
-        {
-            return (num1 + num2) / 2;
-        }
     }
 }
-        /*The program you are given takes 2 numbers as input and should calculate and output their average. But something is wrong.
-        Complete the Avg class by creating the constructor, where the 2 parameters will be assigned to members of the class.
+       /* The music app you enjoy allows you to choose 5 music genres to follow.
+        The program you are given takes 5 music genres as input and stores them in the MusicGenres object as an array.
+        Fix the program by declaring an indexer inside the MusicGenres class so that the given outputs work correctly.
 
         Sample Input
-        5.0
-        4.0
+        Blues
+        Rock
+        Hip Hop
+        Country
+        Soul
 
         Sample Output
-        4.5*/
+        Following: Blues
+        Following: Rock
+        Following: Hip Hop
+        Following: Country
+        Following: Soul*/
