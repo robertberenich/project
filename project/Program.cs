@@ -11,24 +11,45 @@ namespace project
     {
         static void Main(string[] args)
         {
-            string name = Console.ReadLine();
+            string[] words = {
+                "home",
+                "programming",
+                "victory",
+                "C#",
+                "football",
+                "sport",
+                "book",
+                "learn",
+                "dream",
+                "fun"
+            };
 
-            if (name.Length>10)
+            string letter = Console.ReadLine();
+
+            int count = 0;
+            foreach (string i in words)
             {
-                name = name.Remove(10);
+                if (i.Contains(letter))
+                {
+                    Console.WriteLine(i);
+                    count++;
+                }
             }
-
-            Console.WriteLine(name);
+            if (count == 0)
+            {
+                Console.WriteLine("No match");
+            }
             //your code goes here
 
-            /*In the RPG game you are playing, the name of the player - character should not exceed 10 characters in length.
-            Write a program to take the player - character as input, and abbreviate it beginning at the 10th character if the name is longer than 10 characters.Output the final result.
+            /*The program you are given defines an array with 10 words and takes a letter as input.
+            Write a program to iterate through the array and output words containing the taken letter.
+            If there is no such word, the program should output "No match".
 
             Sample Input
-            DragonBorn126
+            u
 
             Sample Output
-            DragonBorn*/
+            fun*/
         }
     }
 }
