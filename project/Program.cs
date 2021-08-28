@@ -11,47 +11,37 @@ namespace project
     {
         static void Main(string[] args)
         {
-            int numOfDeps = Convert.ToInt32(Console.ReadLine());
+            int count = Convert.ToInt32(Console.ReadLine());
 
-            int count = 0;
-            while (count < numOfDeps)
+            int[] numbers = new int[count];
+
+            for (int i = 0; i < count; i++)
             {
-                string depName = Console.ReadLine();
-                Department dep = new Department(depName);
-                count++;
+                numbers[i] = Convert.ToInt32(Console.ReadLine());
             }
 
-            Console.WriteLine("Number of departments: " + Department.depCount);
+            Array.Sort(numbers);
+
+            foreach (int k in numbers)
+            {
+                Console.WriteLine(k);
+            }
+
         }
     }
-    class Department
-    {
-
-        public string depName;
-        
-        public static int depCount = 2;
-        
-
-        //complete the constructor
-        public Department(string name)
-        {
-            Console.WriteLine("Department opened: " + name);
-            this.depName = name;
-            depCount++;
-        }
-    }
-
-    /*A company has 2 departments and it is growing, so more departments are needed.
-    The program you are given takes the number of departments to be opened as input, then takes their names and creates Department objects, passing their names as the constructor.
-    Complete the Department class to have 1 static member depCount with an initial value of 2 for the number of departments and the constructor that will count it and output corresponding message(see sample output).
-
-    Sample Input
-    2
-    Finance
-    Marketing
-
-    Sample Output
-    Department opened: Finance
-    Department opened: Marketing
-    Number of departments: 4*/
 }
+        /*The program you are given takes the N number as the size of an array, followed by N numbers.
+        Complete the program to sort and output every element of an array, each on a new line.
+
+        Sample Input
+        4
+        1
+        14
+        3
+        5
+
+        Sample Output
+        1
+        3
+        5
+        14*/
