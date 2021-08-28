@@ -11,37 +11,38 @@ namespace project
     {
         static void Main(string[] args)
         {
-            int count = Convert.ToInt32(Console.ReadLine());
+            double num1 = Convert.ToDouble(Console.ReadLine());
+            double num2 = Convert.ToDouble(Console.ReadLine());
 
-            int[] numbers = new int[count];
+            Avg avg = new Avg(num1, num2);
 
-            for (int i = 0; i < count; i++)
-            {
-                numbers[i] = Convert.ToInt32(Console.ReadLine());
-            }
+            Console.WriteLine(avg.GetAvg());
+        }
+    }
 
-            Array.Sort(numbers);
+    class Avg
+    {
+        double num1;
+        double num2;
 
-            foreach (int k in numbers)
-            {
-                Console.WriteLine(k);
-            }
+        public Avg(double num1, double num2)
+        {
+            this.num1 = num1;
+            this.num2 = num2;
+        }
 
+        public double GetAvg()
+        {
+            return (num1 + num2) / 2;
         }
     }
 }
-        /*The program you are given takes the N number as the size of an array, followed by N numbers.
-        Complete the program to sort and output every element of an array, each on a new line.
+        /*The program you are given takes 2 numbers as input and should calculate and output their average. But something is wrong.
+        Complete the Avg class by creating the constructor, where the 2 parameters will be assigned to members of the class.
 
         Sample Input
-        4
-        1
-        14
-        3
-        5
+        5.0
+        4.0
 
         Sample Output
-        1
-        3
-        5
-        14*/
+        4.5*/
