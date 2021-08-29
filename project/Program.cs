@@ -11,22 +11,36 @@ namespace project
     {
         static void Main(string[] args)
         {
-            Card card1 = new Card();
+            int pay = Convert.ToInt32(Console.ReadLine());
 
-            //fix the output
-            Console.WriteLine(card1.AccountNum);
+            Payment pay1 = new Payment();
+            pay1.PaymentValue = pay;
         }
     }
-    class Card
-    {
-        private string accountNum = "0011592048120";
-        public string AccountNum
-        {
-            get { return accountNum; }
-        }
 
+    class Payment
+    {
+        private int paymentValue;
+        public int PaymentValue
+        {
+            set
+            {
+                if (value <= 50000)
+                {
+                    paymentValue = value;
+                    Console.WriteLine("Accepted");
+                }
+                else Console.WriteLine("Error");
+            }
+        }
     }
 }
-            /*The program you are given should output the account number on the bank card.
-            Create a get property to access the corresponding class member*/
-        
+            /*You are creating our payment application. The maximum payment it can make at one time is 50000.
+            The program you are given takes the payment value as input.
+            Complete the provided property to take the payment, assign it to appropriate class member, and output "Accepted" if the payment isn't greater than 50000. If it is, the property should output "Error."
+
+            Sample Input
+            15000
+
+            Sample Output
+            Accepted*/
