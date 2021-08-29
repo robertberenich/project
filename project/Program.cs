@@ -11,19 +11,26 @@ namespace project
     {
         static void Main(string[] args)
         {
-            Settings("James", 25, "Spanish");
-            Settings("Tom", 36);
+            int length = Convert.ToInt32(Console.ReadLine());
+            int height = Convert.ToInt32(Console.ReadLine());
+
+
+            //Output
+            Console.WriteLine(Area(length, height));
         }
-        //complete the method
-        static void Settings(string name, int age, string language = "English")
+        static int Area(int x, int y)
         {
-            Console.WriteLine("Name: " + name);
-            Console.WriteLine("Age: " + age);
-            Console.WriteLine("Language: " + language);
+            return x * y;
         }
     }
 }
-        /*You are making your own social network application. The users are able to set their names, their ages, and their preferred language.
-        If user doesn't set the language, English will be set as default.
-        Complete the method with name, age and language parameters and take into account the default English option for language in order to correctly output the information about the provided 2 users.
-        */
+    /*You are writing a program to calculate the area of a rectangle. Currently it takes the the length and the height as inputs.
+    Complete the given method to take them as arguments, then calculate and return the area.
+
+    Sample Input
+    4
+    5
+
+    Sample Output
+    20
+    */
