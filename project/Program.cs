@@ -11,18 +11,40 @@ namespace project
     {
         static void Main(string[] args)
         {
-            Project project = new Project();
+            string name = Console.ReadLine();
+            string phoneNumber = Console.ReadLine();
 
+            User user1 = new User(name, phoneNumber);
+            user1.ShowDetails();
         }
     }
-    class Project
+    class User
     {
-        public Project()
+        private string userName;
+        private string phoneNumber;
+        //complete the constructor
+        public User(string x, string y)
         {
-            Console.WriteLine("Project created");
+            userName = x;
+            phoneNumber = y;
+            Console.WriteLine("Profile is created");
         }
-
+        public void ShowDetails()
+        {
+            Console.WriteLine("Name: " + userName);
+            Console.WriteLine("Phone number: " + phoneNumber);
+        }
     }
 }
-    /*Your graphic application needs to report that a new project has been created successfully once the "Create" button has been pressed.
-    Complete the class by adding a constructor that will show message "Project created" once the operation is done.*/
+    /*We are creating an application for mobile operator.
+    The user need to enter his/her name and phone number to register.
+    The program you are given should take this data as input, use them in constructor while creating the object, and output the corresponding message.
+
+    Sample Input
+    Tom
+    00412561
+
+    Sample Output
+    Profile is created
+    Name: Tom
+    Phone number: 00412561*/
