@@ -11,22 +11,31 @@ namespace project
     {
         static void Main(string[] args)
         {
-            int attendance = Convert.ToInt32(Console.ReadLine());
-            int avgScore = Convert.ToInt32(Console.ReadLine());
+            int N = Convert.ToInt32(Console.ReadLine());
 
-            if (attendance >= 95 && avgScore >= 80) Console.WriteLine("Accepted");
-            else Console.WriteLine("Denied");
+            while (true)
+            {
+                int res = Convert.ToInt32(Console.ReadLine());
+                if (res > N)
+                {
+                    Console.WriteLine("Sold: {0}", res);
+                    break;
+                }
 
+            }
         }
     }
 }
-    /*Students should have at least 95% attendance and an average score of 80 to win a scholarship.
-    Write a program to take attendance and average score values as input and output "Accepted", if the given requirements are satisfied, and "Denied", if they are not.
+    /*We are making a program for auction with a maximum bid set. The count of bids is variable.
+    Write a program to take the maximum bid as input, then take all bids from auction participants until the maximum bid is exceeded.
+    The program should output the corresponding message with the winning bid.
 
     Sample Input
-    98
-    70
+    1600
+    800
+    1300
+    1700
 
     Sample Output
-    Denied
+    Sold: 1700
     */
