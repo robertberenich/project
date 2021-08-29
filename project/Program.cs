@@ -11,27 +11,20 @@ namespace project
     {
         static void Main(string[] args)
         {
-            int levels = Convert.ToInt32(Console.ReadLine());
-
-            Console.WriteLine(Points(levels));
+            Console.WriteLine(Add(10, 12));
+            Console.WriteLine(Add(1.5, 2.9));
         }
-
-
-        static int Points(int levels)
+        //complete the method to sum
+        static int Add(int x, int y)
         {
-            if (levels == 1) return 1;
-
-            int result = levels + Points(levels - 1);
-            return result;
+            return x + y;
         }
-
+        //overload it for double type
+        static double Add(double x, double y)
+        {
+            return x + y;
+        }
     }
 }
-/*Passing the first level of a video game awards the player 1 point. For each subsequent level passed, the points awarded increment by 1 (2 for the 2nd level, 3 for the 3rd, and so on).
-The program takes the number of passed levels as input. Complete the function to take that number as an argument, and recursively calculate and return the total number of points given for all passed levels.
-
-Sample Input
-3
-
-Sample Output
-6*/
+    /*Complete the Add() method so that it will calculate the sum of two numbers given as arguments.
+    Overload it in order to do the same operation with double type values.*/
