@@ -11,35 +11,50 @@ namespace project
     {
         static void Main(string[] args)
         {
-            Score tm1 = new Score(2, 3);
-            Score tm2 = new Score(4, 2);
+            string name1 = Console.ReadLine();
+            int points1 = Convert.ToInt32(Console.ReadLine());
+            string name2 = Console.ReadLine();
+            int points2 = Convert.ToInt32(Console.ReadLine());
 
-            Score finalScores = tm1 + tm2;
+            DancerPoints dancer1 = new DancerPoints(name1, points1);
+            DancerPoints dancer2 = new DancerPoints(name2, points2);
 
-
-            Console.WriteLine("Round 1: " + finalScores.Round1Score);
-            Console.WriteLine("Round 2: " + finalScores.Round2Score);
+            DancerPoints total = dancer1 + dancer2;
+            Console.WriteLine(total.name);
+            Console.WriteLine(total.points);
         }
     }
-    class Score
+
+    class DancerPoints
     {
-        public int Round1Score { get; set; }
-        public int Round2Score { get; set; }
-        public Score(int r1, int r2)
+        public string name;
+        public int points;
+        public DancerPoints(string name, int points)
         {
-            Round1Score = r1;
-            Round2Score = r2;
+            this.name = name;
+            this.points = points;
         }
 
-        public static Score operator + (Score player1, Score player2)
+        public static DancerPoints operator + (DancerPoints dancer1, DancerPoints dancer2)
         {
-            int r1TeamPoints = player1.Round1Score + player2.Round1Score;
-            int r2TeamPoints = player1.Round2Score + player2.Round2Score;
-            Score res = new Score(r1TeamPoints, r2TeamPoints);
-            return res;
+            string nameLocal = $"{dancer1.name} & {dancer2.name}";
+            int pointsLocal = dancer1.points + dancer2.points;
+            DancerPoints duo = new DancerPoints(nameLocal, pointsLocal);
+            return duo;
         }
+
     }
 }
-        /*You and your friend are playing a game as one team. Each player must pass 2 rounds and gets points for each round passed.
-        The program you are given creates two Score objects where each round scores are stored (they are passed to a constructor).
-        Overload the + operator for the Score class to calculate the team score for every round.*/
+    /*In a ballroom dancing competition, each dancer from a pair is evaluated separately, and then their points are summed up to get the total pair score.
+    The program you are given takes the names and the points of each dancer as input and creates a DancerPoints objects for each dancer, using the taken name and score values as parameters for constructors.
+    Complete the given class, using overload + operator to return an new object where the names of dancers are in one string (see sample output) and the score is equal to the sum of their points.
+
+    Sample Input
+    Dave
+    8
+    Jessica
+    7
+
+    Sample Output
+    Dave & Jessica
+    15*/
