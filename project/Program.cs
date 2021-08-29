@@ -11,40 +11,41 @@ namespace project
     {
         static void Main(string[] args)
         {
-            string name = Console.ReadLine();
-            string phoneNumber = Console.ReadLine();
+            int games = Convert.ToInt32(Console.ReadLine());
+            int wins = Convert.ToInt32(Console.ReadLine());
 
-            User user1 = new User(name, phoneNumber);
-            user1.ShowDetails();
+            //creating the player object
+            Player player1 = new Player();
+            player1.games = games;
+            player1.wins = wins;
+
+            //output
+            player1.GetWinRate();
         }
     }
-    class User
+
+    class Player
     {
-        private string userName;
-        private string phoneNumber;
-        //complete the constructor
-        public User(string x, string y)
+        public int games;
+        public int wins;
+        //winrate is private
+        private int winrate;
+
+        //complete the method
+        public void GetWinRate()
         {
-            userName = x;
-            phoneNumber = y;
-            Console.WriteLine("Profile is created");
-        }
-        public void ShowDetails()
-        {
-            Console.WriteLine("Name: " + userName);
-            Console.WriteLine("Phone number: " + phoneNumber);
+            winrate = wins * 100 / games;
+            Console.WriteLine(winrate);
         }
     }
 }
-    /*We are creating an application for mobile operator.
-    The user need to enter his/her name and phone number to register.
-    The program you are given should take this data as input, use them in constructor while creating the object, and output the corresponding message.
+    /*We are developing a profile system for player of our online game.
+    The program takes the number of games and wins as input and creates a player object.
+    Complete the GetWinRate() method inside the given Player class to calculate and output the win rate.
 
     Sample Input
-    Tom
-    00412561
+    130
+    70
 
     Sample Output
-    Profile is created
-    Name: Tom
-    Phone number: 00412561*/
+    53*/
