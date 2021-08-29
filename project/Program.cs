@@ -11,41 +11,27 @@ namespace project
     {
         static void Main(string[] args)
         {
-            int games = Convert.ToInt32(Console.ReadLine());
-            int wins = Convert.ToInt32(Console.ReadLine());
+            int levels = Convert.ToInt32(Console.ReadLine());
 
-            //creating the player object
-            Player player1 = new Player();
-            player1.games = games;
-            player1.wins = wins;
-
-            //output
-            player1.GetWinRate();
+            Console.WriteLine(Points(levels));
         }
-    }
 
-    class Player
-    {
-        public int games;
-        public int wins;
-        //winrate is private
-        private int winrate;
 
-        //complete the method
-        public void GetWinRate()
+        static int Points(int levels)
         {
-            winrate = wins * 100 / games;
-            Console.WriteLine(winrate);
+            if (levels == 1) return 1;
+
+            int result = levels + Points(levels - 1);
+            return result;
         }
+
     }
 }
-    /*We are developing a profile system for player of our online game.
-    The program takes the number of games and wins as input and creates a player object.
-    Complete the GetWinRate() method inside the given Player class to calculate and output the win rate.
+/*Passing the first level of a video game awards the player 1 point. For each subsequent level passed, the points awarded increment by 1 (2 for the 2nd level, 3 for the 3rd, and so on).
+The program takes the number of passed levels as input. Complete the function to take that number as an argument, and recursively calculate and return the total number of points given for all passed levels.
 
-    Sample Input
-    130
-    70
+Sample Input
+3
 
-    Sample Output
-    53*/
+Sample Output
+6*/
