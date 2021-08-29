@@ -11,21 +11,37 @@ namespace project
     {
         static void Main(string[] args)
         {
-            int[,] num = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
-
-            for (int j = 0; j < 3; j++)
+            int[] numbers = new int[5];
+            int count = 0;
+            int res = 0;
+            while (count < 5)
             {
-                for (int k = 0; k < 3; k++)
+                numbers[count] = Convert.ToInt32(Console.ReadLine());
+                count++;
+            }
+            //your code goes here
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                if (numbers[i] % 2 == 0)
                 {
-                    Console.Write(num[j, k]);
+                    res = res + numbers[i];
                 }
-                Console.WriteLine();
+
             }
 
+            Console.WriteLine(res);
         }
     }
 }
-        /*Complete the program to output this array int[,] num = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };  in the form of a table (without separation):
-        123
-        456
-        789*/
+            /*The program you are given takes 5 numbers as input and stores them in an array.
+            Complete the program to go through the array and output the the sum of even numbers.
+
+            Sample Input
+            10
+            890
+            15
+            3699
+            14
+
+            Sample Output
+            914*/
