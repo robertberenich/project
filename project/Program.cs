@@ -11,35 +11,46 @@ namespace project
     {
         static void Main(string[] args)
         {
-            int amount = Convert.ToInt32(Console.ReadLine());
+            int num = Convert.ToInt32(Console.ReadLine());
 
-            int count = 0;
-            int totalAmount = 0;
-            while (count < amount)
+            switch (num)
             {
-                count++;
-                int price = Convert.ToInt32(Console.ReadLine());
-
-                if (!(price % 2 == 0))
-                    continue;
-
-
-                totalAmount += price;
+                case 1:
+                    Console.WriteLine("Sports");
+                    break;
+                case 2:
+                    Console.WriteLine("Politics");
+                    break;
+                case 3:
+                    Console.WriteLine("Business");
+                    break;
+                case 4:
+                    Console.WriteLine("Technology");
+                    break;
+                case 5:
+                    Console.WriteLine("Art");
+                    break;
             }
-            Console.WriteLine(totalAmount);
+
         }
     }
 }
-    /*A store is running a unique promotion. If an item's price is an odd number, the item is free.
-    The program takes the number of purchased items as input, followed by the prices of each of the items, then outputs the total amount. 
-    Skip the odd prices and exclude them in total amount calculation.
+    }
+}
+    /*You are creating a social media application, and need to develop a menu where the user can choose the topic he is interested in learning more about.
+
+    Here are the the topics marked by corresponding numbers:
+    1 - Sports
+    2 - Politics
+    3 - Business
+    4 - Technology
+    5 - Art
+
+    Write a program to take the number as input and output the corresponding topic name.
 
     Sample Input
-    3
-    140
-    235
-    100
+    1
 
     Sample Output
-    240
+    Sports
     */
