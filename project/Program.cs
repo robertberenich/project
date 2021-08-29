@@ -11,47 +11,35 @@ namespace project
     {
         static void Main(string[] args)
         {
-            MusicGenres genres = new MusicGenres();
+            Score tm1 = new Score(2, 3);
+            Score tm2 = new Score(4, 2);
 
-            int count = 0;
-            while (count < 5)
-            {
-                genres[count] = Console.ReadLine();
-                count++;
-            }
+            Score finalScores = tm1 + tm2;
 
-            for (int i = 0; i < 5; i++)
-            {
-                Console.WriteLine("Following: " + genres[i]);
-            }
+
+            Console.WriteLine("Round 1: " + finalScores.Round1Score);
+            Console.WriteLine("Round 2: " + finalScores.Round2Score);
         }
     }
-    class MusicGenres
+    class Score
     {
-        private string[] genres = new string[5];
-
-        public string this [int index]
+        public int Round1Score { get; set; }
+        public int Round2Score { get; set; }
+        public Score(int r1, int r2)
         {
-            get { return genres[index];}
-            set { genres[index] = value;}
+            Round1Score = r1;
+            Round2Score = r2;
         }
 
+        public static Score operator + (Score player1, Score player2)
+        {
+            int r1TeamPoints = player1.Round1Score + player2.Round1Score;
+            int r2TeamPoints = player1.Round2Score + player2.Round2Score;
+            Score res = new Score(r1TeamPoints, r2TeamPoints);
+            return res;
+        }
     }
 }
-       /* The music app you enjoy allows you to choose 5 music genres to follow.
-        The program you are given takes 5 music genres as input and stores them in the MusicGenres object as an array.
-        Fix the program by declaring an indexer inside the MusicGenres class so that the given outputs work correctly.
-
-        Sample Input
-        Blues
-        Rock
-        Hip Hop
-        Country
-        Soul
-
-        Sample Output
-        Following: Blues
-        Following: Rock
-        Following: Hip Hop
-        Following: Country
-        Following: Soul*/
+        /*You and your friend are playing a game as one team. Each player must pass 2 rounds and gets points for each round passed.
+        The program you are given creates two Score objects where each round scores are stored (they are passed to a constructor).
+        Overload the + operator for the Score class to calculate the team score for every round.*/
