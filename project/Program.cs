@@ -11,36 +11,18 @@ namespace project
     {
         static void Main(string[] args)
         {
-            int pay = Convert.ToInt32(Console.ReadLine());
+            Project project = new Project();
 
-            Payment pay1 = new Payment();
-            pay1.PaymentValue = pay;
         }
     }
-
-    class Payment
+    class Project
     {
-        private int paymentValue;
-        public int PaymentValue
+        public Project()
         {
-            set
-            {
-                if (value <= 50000)
-                {
-                    paymentValue = value;
-                    Console.WriteLine("Accepted");
-                }
-                else Console.WriteLine("Error");
-            }
+            Console.WriteLine("Project created");
         }
+
     }
 }
-            /*You are creating our payment application. The maximum payment it can make at one time is 50000.
-            The program you are given takes the payment value as input.
-            Complete the provided property to take the payment, assign it to appropriate class member, and output "Accepted" if the payment isn't greater than 50000. If it is, the property should output "Error."
-
-            Sample Input
-            15000
-
-            Sample Output
-            Accepted*/
+    /*Your graphic application needs to report that a new project has been created successfully once the "Create" button has been pressed.
+    Complete the class by adding a constructor that will show message "Project created" once the operation is done.*/
