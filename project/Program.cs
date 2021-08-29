@@ -11,50 +11,39 @@ namespace project
     {
         static void Main(string[] args)
         {
-            string accNumber = Console.ReadLine();
-            double balance = Convert.ToDouble(Console.ReadLine());
-
-            User user = new User(accNumber, balance);
-
-            user.ShowDetails();
-
+            WayStatus status = new WayStatus();
         }
     }
-
-    class Account
+    class Flight
     {
-        protected double Balance { get; set; }
-    }
-
-    class User : Account
-    {
-        public string AccNumber { get; set; }
-
-        //complete the constructor
-        public User(string accNumber, double balance)
+        public Flight()
         {
-            this.AccNumber = accNumber;
-            this.Balance = balance;
+            Console.WriteLine("Registration");
+        }
+        ~Flight()
+        {
+            Console.WriteLine("Closed");
+        }
+    }
+    class WayStatus: Flight
+    {
+        public WayStatus()
+        {
+            Console.WriteLine("On the way");
         }
 
-        public void ShowDetails()
+        ~WayStatus()
         {
-            Console.WriteLine("Account N: " + AccNumber);
-            Console.WriteLine("Balance: " + Balance);
+            Console.WriteLine("Landed");
         }
     }
 }
     /*
-    The program you are given takes an account number and its balance as input.
-    It defines Account class with 1 member balance and derives User class from it with 1 additional member - the account number, then creates a user object and tries to store the balance and account number in it, and shows the details. But something is wrong.
-    Fix the program so that it completes the User() constructor, which should assign the parameters to the corresponding members of the User class.
-    Also, check the access modifier of balance member of Account class.
+    You are the airport administrator responsible for setting flight statuses.
+    At first the flight program was showing only "Registration" and "Closed" statuses, but we need to expand it to give more detailed information.
+    Derive WayStatus class from Flight class and complete its
+    1. constructor, to output "On the way"
+    2. destructor, to output "Landed"
 
-    Sample Input
-    005615216
-    1488.36
-
-    Sample Output
-    Account N: 005615216
-    Balance: 1488.36
+    so that the program correctly outputs all the statuses of the flight.
     */
