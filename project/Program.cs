@@ -11,31 +11,19 @@ namespace project
     {
         static void Main(string[] args)
         {
-            int salaryBudget = Convert.ToInt32(Console.ReadLine());
-            int percent = Convert.ToInt32(Console.ReadLine());
-
-            Console.WriteLine("Before the increase: " + salaryBudget);
-
-            //complete the method call
-            Increase(ref salaryBudget, percent);
-
-            Console.WriteLine("After the increase: " + salaryBudget);
+            Settings("James", 25, "Spanish");
+            Settings("Tom", 36);
         }
-        static void Increase(ref int x, double y)
+        //complete the method
+        static void Settings(string name, int age, string language = "English")
         {
-            x = Convert.ToInt32(x + (y / 100 * x));
-
+            Console.WriteLine("Name: " + name);
+            Console.WriteLine("Age: " + age);
+            Console.WriteLine("Language: " + language);
         }
     }
 }
-        /*Management has decided to increase the total salary budget.
-        The program you are given takes the current salary budget and the raise percentage as input. It should output the salary budget before the increase, then calculate and output the budget with the raises included.
-        Fix the program by completing the Increase() method (which should calculate the new salary budget) and calling it, so that the provided outputs work correctly.
-
-        Sample Input
-        150000
-        15
-
-        Sample Output
-        Before the increase: 150000
-        After the increase: 172500*/
+        /*You are making your own social network application. The users are able to set their names, their ages, and their preferred language.
+        If user doesn't set the language, English will be set as default.
+        Complete the method with name, age and language parameters and take into account the default English option for language in order to correctly output the information about the provided 2 users.
+        */
