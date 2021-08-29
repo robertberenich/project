@@ -11,20 +11,31 @@ namespace project
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Add(10, 12));
-            Console.WriteLine(Add(1.5, 2.9));
+            int salaryBudget = Convert.ToInt32(Console.ReadLine());
+            int percent = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Before the increase: " + salaryBudget);
+
+            //complete the method call
+            Increase(ref salaryBudget, percent);
+
+            Console.WriteLine("After the increase: " + salaryBudget);
         }
-        //complete the method to sum
-        static int Add(int x, int y)
+        static void Increase(ref int x, double y)
         {
-            return x + y;
-        }
-        //overload it for double type
-        static double Add(double x, double y)
-        {
-            return x + y;
+            x = Convert.ToInt32(x + (y / 100 * x));
+
         }
     }
 }
-    /*Complete the Add() method so that it will calculate the sum of two numbers given as arguments.
-    Overload it in order to do the same operation with double type values.*/
+        /*Management has decided to increase the total salary budget.
+        The program you are given takes the current salary budget and the raise percentage as input. It should output the salary budget before the increase, then calculate and output the budget with the raises included.
+        Fix the program by completing the Increase() method (which should calculate the new salary budget) and calling it, so that the provided outputs work correctly.
+
+        Sample Input
+        150000
+        15
+
+        Sample Output
+        Before the increase: 150000
+        After the increase: 172500*/
