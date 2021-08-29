@@ -11,37 +11,22 @@ namespace project
     {
         static void Main(string[] args)
         {
-            int totalPrice = Convert.ToInt32(Console.ReadLine());
+            int attendance = Convert.ToInt32(Console.ReadLine());
+            int avgScore = Convert.ToInt32(Console.ReadLine());
 
-            double answer = Discount(totalPrice);
-
-            Console.WriteLine(answer);
-
-
-        }
-        //complete the method declaration
-        static double Discount(int x)
-        {
-            double result = x;
-            if (x >= 10000)
-            {
-                result = x - (x * 0.2);
-            }
-            return result;
-            //complete the method body
+            if (attendance >= 95 && avgScore >= 80) Console.WriteLine("Accepted");
+            else Console.WriteLine("Denied");
 
         }
     }
 }
-    /*A store is running a promotion: if the total purchase price is equal to or exceeds
-    10000, the price will be discounted by 20%.
-    The program you are given takes the total purchase price as input.
-    Complete the given method to take the total purchase price as an argument, and calculate and return the discounted price if campaign's requirement is satisfied.
-    The method should return the same price if discount is not given.
+    /*Students should have at least 95% attendance and an average score of 80 to win a scholarship.
+    Write a program to take attendance and average score values as input and output "Accepted", if the given requirements are satisfied, and "Denied", if they are not.
 
     Sample Input
-    13000
+    98
+    70
 
     Sample Output
-    10400
+    Denied
     */
