@@ -11,46 +11,45 @@ namespace project
     {
         static void Main(string[] args)
         {
-            int num = Convert.ToInt32(Console.ReadLine());
+            string brandName = Console.ReadLine();
+            string modelName = Console.ReadLine();
 
-            switch (num)
-            {
-                case 1:
-                    Console.WriteLine("Sports");
-                    break;
-                case 2:
-                    Console.WriteLine("Politics");
-                    break;
-                case 3:
-                    Console.WriteLine("Business");
-                    break;
-                case 4:
-                    Console.WriteLine("Technology");
-                    break;
-                case 5:
-                    Console.WriteLine("Art");
-                    break;
-            }
+            Car car = new Car();
+            car.Brand = brandName;
+            car.Model = modelName;
 
+            car.ShowBrand();
+            car.ShowModel();
+        }
+    }
+    class Vehicle
+    {
+        public string Brand { get; set; }
+
+        public void ShowBrand()
+        {
+            Console.WriteLine("Brand: " + Brand);
+        }
+    }
+
+    //complete the Car class
+    class Car: Vehicle
+    {
+        public string Model { get; set; }
+        public void ShowModel ()
+        {
+            Console.WriteLine("Model: " + Model);
         }
     }
 }
-    }
-}
-    /*You are creating a social media application, and need to develop a menu where the user can choose the topic he is interested in learning more about.
-
-    Here are the the topics marked by corresponding numbers:
-    1 - Sports
-    2 - Politics
-    3 - Business
-    4 - Technology
-    5 - Art
-
-    Write a program to take the number as input and output the corresponding topic name.
+    /*The program you are given takes the brand and model of the car as input, and defines a Vehicle class with model property and ShowModel() method.
+    Complete the Car class to inherit the Vehicle class, and add the Model property and ShowModel() method so that the given method call of the car object works correctly(see sample output).
 
     Sample Input
-    1
+    BMW
+    5 Series
 
     Sample Output
-    Sports
+    Brand: BMW
+    Model: 5 Series
     */
