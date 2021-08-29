@@ -11,41 +11,51 @@ namespace project
     {
         static void Main(string[] args)
         {
-            Unit unit1 = new Unit();
-            Unit musketeer = new Musketeer();
-            Unit magician = new Magician();
+            Figure rectangle = new Rectangle(5, 6);
+            Figure triangle = new Triangle(4, 8, 3);
 
-            unit1.Attack();
-            musketeer.Attack();
-            magician.Attack();
+            Console.WriteLine(rectangle.Perimeter());
+            Console.WriteLine(triangle.Perimeter());
         }
     }
+    abstract class Figure
+    {
+        public abstract int Perimeter();
 
-    class Unit
-    {
-        public virtual void Attack()
-        {
-            Console.WriteLine("Using sword!");
-        }
     }
-    class Musketeer: Unit
+    class Rectangle : Figure
     {
-        public override void Attack()
+        public int width;
+        public int height;
+        public Rectangle(int width, int height)
         {
-            Console.WriteLine("Using musket!");
+            this.width = width;
+            this.height = height;
         }
+        public override int Perimeter()
+        {
+            return width * 2 + 2 * height;
+        }
+
     }
-    class Magician: Unit
+    class Triangle : Figure
     {
-        public override void Attack()
+        public int side1;
+        public int side2;
+        public int side3;
+        public Triangle(int s1, int s2, int s3)
         {
-            Console.WriteLine("Using magic!");
+            this.side1 = s1;
+            this.side2 = s2;
+            this.side3 = s3;
         }
+        public override int Perimeter()
+        {
+            return side1 + side2 + side3;
+        }
+
     }
 }
-    /*In a turn-based strategy game, each unit can attack.
-    The standard unit attacks with a sword. But there are two more types of units - musketeers and magicians, who attack in their own way.
-    The program you are given declares Unit class which has a method Attack(). It outputs "Using sword!".
-    Derive Musketeer and Magician classes from the Unit class and override its Attack() method to output the corresponding messages while attacking:
-    Musketeer => "Using musket!"
-    Magician => "Using magic!"*/
+/*The program you are given defines abstract class Figure and derives Rectangle and Triangle classes from it.
+Add an abstract method Perimeter to class Figure, than override it in derived classes to calculate perimeters of Rectangle and Triangle objects.
+*/
