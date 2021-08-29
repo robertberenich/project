@@ -11,39 +11,41 @@ namespace project
     {
         static void Main(string[] args)
         {
-            WayStatus status = new WayStatus();
-        }
-    }
-    class Flight
-    {
-        public Flight()
-        {
-            Console.WriteLine("Registration");
-        }
-        ~Flight()
-        {
-            Console.WriteLine("Closed");
-        }
-    }
-    class WayStatus: Flight
-    {
-        public WayStatus()
-        {
-            Console.WriteLine("On the way");
-        }
+            Unit unit1 = new Unit();
+            Unit musketeer = new Musketeer();
+            Unit magician = new Magician();
 
-        ~WayStatus()
+            unit1.Attack();
+            musketeer.Attack();
+            magician.Attack();
+        }
+    }
+
+    class Unit
+    {
+        public virtual void Attack()
         {
-            Console.WriteLine("Landed");
+            Console.WriteLine("Using sword!");
+        }
+    }
+    class Musketeer: Unit
+    {
+        public override void Attack()
+        {
+            Console.WriteLine("Using musket!");
+        }
+    }
+    class Magician: Unit
+    {
+        public override void Attack()
+        {
+            Console.WriteLine("Using magic!");
         }
     }
 }
-    /*
-    You are the airport administrator responsible for setting flight statuses.
-    At first the flight program was showing only "Registration" and "Closed" statuses, but we need to expand it to give more detailed information.
-    Derive WayStatus class from Flight class and complete its
-    1. constructor, to output "On the way"
-    2. destructor, to output "Landed"
-
-    so that the program correctly outputs all the statuses of the flight.
-    */
+    /*In a turn-based strategy game, each unit can attack.
+    The standard unit attacks with a sword. But there are two more types of units - musketeers and magicians, who attack in their own way.
+    The program you are given declares Unit class which has a method Attack(). It outputs "Using sword!".
+    Derive Musketeer and Magician classes from the Unit class and override its Attack() method to output the corresponding messages while attacking:
+    Musketeer => "Using musket!"
+    Magician => "Using magic!"*/
