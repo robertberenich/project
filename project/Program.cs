@@ -11,31 +11,35 @@ namespace project
     {
         static void Main(string[] args)
         {
-            int N = Convert.ToInt32(Console.ReadLine());
+            int amount = Convert.ToInt32(Console.ReadLine());
 
-            while (true)
+            int count = 0;
+            int totalAmount = 0;
+            while (count < amount)
             {
-                int res = Convert.ToInt32(Console.ReadLine());
-                if (res > N)
-                {
-                    Console.WriteLine("Sold: {0}", res);
-                    break;
-                }
+                count++;
+                int price = Convert.ToInt32(Console.ReadLine());
 
+                if (!(price % 2 == 0))
+                    continue;
+
+
+                totalAmount += price;
             }
+            Console.WriteLine(totalAmount);
         }
     }
 }
-    /*We are making a program for auction with a maximum bid set. The count of bids is variable.
-    Write a program to take the maximum bid as input, then take all bids from auction participants until the maximum bid is exceeded.
-    The program should output the corresponding message with the winning bid.
+    /*A store is running a unique promotion. If an item's price is an odd number, the item is free.
+    The program takes the number of purchased items as input, followed by the prices of each of the items, then outputs the total amount. 
+    Skip the odd prices and exclude them in total amount calculation.
 
     Sample Input
-    1600
-    800
-    1300
-    1700
+    3
+    140
+    235
+    100
 
     Sample Output
-    Sold: 1700
+    240
     */
