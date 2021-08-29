@@ -11,37 +11,25 @@ namespace project
     {
         static void Main(string[] args)
         {
-            int[] numbers = new int[5];
-            int count = 0;
-            int res = 0;
-            while (count < 5)
-            {
-                numbers[count] = Convert.ToInt32(Console.ReadLine());
-                count++;
-            }
+            string[] games = { "Alien Shooter", "Tic Tac Toe", "Snake", "Puzzle", "Football" };
+
             //your code goes here
-            for (int i = 0; i < numbers.Length; i++)
+
+            int input = Convert.ToInt32(Console.ReadLine());
+            if (input < 5 && !(input > 5))
             {
-                if (numbers[i] % 2 == 0)
-                {
-                    res = res + numbers[i];
-                }
-
+                Console.WriteLine(games[input]);
             }
-
-            Console.WriteLine(res);
+            else Console.WriteLine("Invalid number");
         }
     }
 }
-            /*The program you are given takes 5 numbers as input and stores them in an array.
-            Complete the program to go through the array and output the the sum of even numbers.
+        /*A game machine has 5 games installed on it string[] games = { "Alien Shooter", "Tic Tac Toe", "Snake", "Puzzle", "Football" };  
+         Write a program to take N number as input and output the corresponding game with N index from the array.
+        If user enters an invalid number that is out of array range, the program should output "Invalid number".
 
-            Sample Input
-            10
-            890
-            15
-            3699
-            14
+        Sample Input
+        3
 
-            Sample Output
-            914*/
+        Sample Output
+        Puzzle*/
