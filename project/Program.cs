@@ -11,44 +11,44 @@ namespace project
     {
         static void Main(string[] args)
         {
-            Dictionary<string, int> metals = new Dictionary<string, int>();
-            metals.Add("Platinum", 70);
-            metals.Add("Iridium", 20);
-            metals.Add("Palladium", 30);
-            metals.Add("Scandium", 12);
+            HashSet<string> candidates = new HashSet<string>();
 
-            string metalName = Console.ReadLine();
-            int price = Convert.ToInt32(Console.ReadLine());
+            candidates.Add("John");
+            candidates.Add("Amelie");
+            candidates.Add("Tom");
+            candidates.Add("Richard");
+            candidates.Add("Barbara");
+            candidates.Add("Susan");
+            candidates.Add("Charles");
+            candidates.Add("Daniel");
+            candidates.Add("Tamara");
+            candidates.Add("Donald");
 
-            //add 5th metal details to dictionary
-            metals.Add(metalName, price);
+            HashSet<string> hiring = new HashSet<string>();
 
-
-            int[] prices = metals.Values.ToArray();
-
-            int highestPrice = prices.Max();
-
-            foreach (string i in metals.Keys)
+            while (hiring.Count < 3)
             {
-                if (highestPrice == metals[i])
-                {
-                    Console.WriteLine("The most expensive: " + i);
-                    break;
-                }
+                string hire = Console.ReadLine();
+                hiring.Add(hire);
+
             }
-
-            //your code goes here
-
+            if (hiring.IsSubsetOf(candidates))
+            {
+                Console.WriteLine("Starting hiring process");
+            }
+            else Console.WriteLine("Something is wrong");
 
         }
     }
 }
-/*The program you are given defines a metals dictionary, where names are used as keys and their price for 1 gram as values. It takes the name and the price of 5th metal as input.
-Add the 5th pair to the dictionary and write code to output the message about the most expensive metal in the dictionary.
+/*We are hiring programmers on our team. There are 10 candidates, and we need to choose 3 of them.
+In the program you are given, you have 10 candidates in a hash set. You need to take 3 names as input, add them to a new hiring hash set and check if they are present in our candidates set.
+If they are, the program should output "Starting hiring process", otherwise, "Something is wrong".
 
 Sample Input
-Rhodium
-225
+John
+Susan
+Daniel
 
 Sample Output
-The most expensive: Rhodium*/
+Starting hiring process*/
