@@ -9,44 +9,46 @@ namespace linq
     {
         static void Main(string[] args)
         {
-            string path = @"C:\windows";
+            int hi1 = 5;
+            string hi2 = "Robert";
 
-
-            jobMethod2(path);
-            //jobMethod(path);
-
+            hi2.hiExtension();
+            hi1.hiExtension();
+            Console.WriteLine("==================================");
+            //vs instance method
+            TestClass hi1TestClass = new TestClass();
+            TestClass hi2TestClass = new TestClass();
+            hi1TestClass.hiInstanceMethod(hi1);
+            hi2TestClass.hiInstanceMethod(hi2);
+            Console.WriteLine("==================================");
+            //vs static method
+            TestClassStatic.hiStaticMethod(hi1);
+            TestClassStatic.hiStaticMethod(hi2);
+            Console.WriteLine("==================================");
 
         }
 
-        private static void jobMethod2(string path)
+    }
+    public static class ExtentionTest
+    {
+        public static void hiExtension<T>(this T a)
         {
-            var query = new DirectoryInfo(path).GetFiles()
-                .OrderByDescending(f => f.Length)
-                .Take(5);
-            foreach (var file in query)
-            {
-                Console.WriteLine($"{file.Name}: {file.Length}");
-            }
-        }
-
-        private static void jobMethod(string path)
-        {
-            DirectoryInfo directory = new DirectoryInfo(path);
-            FileInfo[] files = directory.GetFiles();
-            Array.Sort(files, new CompareTool());
-
-            for (int i = 0; i < 5; i++)
-            {
-                FileInfo sample = files[i];
-                Console.WriteLine($"{sample.Name}: {sample.Length}");
-            }
+            Console.WriteLine("Extension Hi " + a);
         }
     }
-    public class CompareTool : IComparer<FileInfo>
+
+    public class TestClass
     {
-        public int Compare(FileInfo x, FileInfo y)
+        public void hiInstanceMethod<T>(T a)
         {
-            return y.Length.CompareTo(x.Length);
+            Console.WriteLine("Instance method hi " + a);
+        }
+    }
+    public static class TestClassStatic
+    {
+        public static void hiStaticMethod<T>(T a)
+        {
+            Console.WriteLine("Static method hi " + a);
         }
     }
 }
