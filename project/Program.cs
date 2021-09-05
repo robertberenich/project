@@ -11,50 +11,54 @@ namespace project
     {
         static void Main(string[] args)
         {
-            int length = Convert.ToInt32(Console.ReadLine());
-            int width = Convert.ToInt32(Console.ReadLine());
-            int height = Convert.ToInt32(Console.ReadLine());
 
-            Cuboid cuboid = new Cuboid(length, width, height);
-
-            Console.WriteLine("Volume: " + cuboid.Volume());
-            Console.WriteLine("Perimeter: " + cuboid.Perimeter());
+            Player player1 = new Player(Difficulty.Easy);
+            Player player2 = new Player(Difficulty.Medium);
+            Player player3 = new Player(Difficulty.Hard);
         }
     }
-    struct Cuboid
+
+    /*
+    Easy => "You have 3 minutes 45 seconds"
+    Medium = > "You have 3 minutes 20 seconds"
+    Hard => "You have 3 minutes"
+    */
+
+    class Player
     {
-        public int length;
-        public int width;
-        public int height;
-
-        public Cuboid(int x, int y, int z)
+        public Player(Difficulty x)
         {
-            length = x;
-            width = y;
-            height = z;
-        }
+            switch (x)
+            {
+                case Difficulty.Easy:
+                    Console.WriteLine("You have 3 minutes 45 seconds");
+                    break;
+                case Difficulty.Medium:
+                    Console.WriteLine("You have 3 minutes 20 seconds");
+                    break;
+                case Difficulty.Hard:
+                    Console.WriteLine("You have 3 minutes");
+                    break;
+                default:
+                    break;
+            }
 
-
-        public int Volume()
-        {
-            int volume = this.height * this.length * this.width;
-            return volume;
-        }
-
-        public int Perimeter()
-        {
-            int perimeter = 4 * (this.height + this.length + this.width);
-            return perimeter;
         }
     }
-}
-/*A cuboid is a three-dimensional shape with a length, width, and a height.
-The program you are given takes takes those dimensions as inputs, defines Cuboid struct and creates its object.
-Complete the program by creating a constructor, which will take the length, the width, and the height as parameters and assign them to its struct members.
-Also complete Volume() and Perimeter() methods inside the struct, to calculate and return them, so that the given methods calls work correctly.
+    enum Difficulty
+    {
+        Easy,
+        Medium,
+        Hard
+    };
 
-Sample Input
-5
-4
-5
+}
+/*A racing video game has 3 difficulty levels: Easy, Medium, and Hard.
+Each difficulty level is assigned maximum time to complete the track: the higher the difficulty, the lower the time.
+The program you are given defines Player class and Difficulty enum, and creates 3 Player objects with different difficulties as parameter for the constructor.
+Complete the Player constructor, which takes the enum as a parameter to check the time for each difficulty option and outputs the corresponding message:
+Easy => "You have 3 minutes 45 seconds"
+Medium = > "You have 3 minutes 20 seconds"
+Hard => "You have 3 minutes"
+
 */
