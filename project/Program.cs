@@ -11,45 +11,44 @@ namespace project
     {
         static void Main(string[] args)
         {
-            Queue<int> q = new Queue<int>();
+            Dictionary<string, int> metals = new Dictionary<string, int>();
+            metals.Add("Platinum", 70);
+            metals.Add("Iridium", 20);
+            metals.Add("Palladium", 30);
+            metals.Add("Scandium", 12);
 
-            while (q.Count < 3)
+            string metalName = Console.ReadLine();
+            int price = Convert.ToInt32(Console.ReadLine());
+
+            //add 5th metal details to dictionary
+            metals.Add(metalName, price);
+
+
+            int[] prices = metals.Values.ToArray();
+
+            int highestPrice = prices.Max();
+
+            foreach (string i in metals.Keys)
             {
-                int num = Convert.ToInt32(Console.ReadLine());
-                q.Enqueue(num);
-            }
-
-            Console.Write("Queue: ");
-            foreach (int i in q)
-                Console.Write(i + " ");
-
-            Console.WriteLine();
-
-            int[] newArr = q.ToArray();
-            Array.Sort(newArr);
-
-            Console.Write("Sorted: ");
-            foreach (int item in newArr)
-            {
-                Console.Write(item + " ");
+                if (highestPrice == metals[i])
+                {
+                    Console.WriteLine("The most expensive: " + i);
+                    break;
+                }
             }
 
             //your code goes here
 
+
         }
     }
 }
-/*Queue
-
-
-Write a program that will take 3 numbers as input and store them in a defined queue.
-Also, add code to output the sorted sequence of elements in the queue, separated by a space.
+/*The program you are given defines a metals dictionary, where names are used as keys and their price for 1 gram as values. It takes the name and the price of 5th metal as input.
+Add the 5th pair to the dictionary and write code to output the message about the most expensive metal in the dictionary.
 
 Sample Input
-6
-3
-14
+Rhodium
+225
 
 Sample Output
-Queue: 6 3 14
-Sorted: 3 6 14*/
+The most expensive: Rhodium*/
