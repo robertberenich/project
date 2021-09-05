@@ -11,40 +11,36 @@ namespace project
     {
         static void Main(string[] args)
         {
-            try
-            {
-                int drinks = Convert.ToInt32(Console.ReadLine());
-                int shelves = Convert.ToInt32(Console.ReadLine());
-                int res = drinks / shelves;
-                Console.WriteLine(res);
-            }
+            string text = Console.ReadLine();
+            int intNum = Convert.ToInt32(Console.ReadLine());
+            double doubNum = Convert.ToDouble(Console.ReadLine());
 
-            catch (DivideByZeroException a)
-            {
-                Console.WriteLine("At least 1 shelf");
-            }
-            catch (FormatException a)
-            {
-                Console.WriteLine("Please insert an integer");
-            }
+
+            Printer.Print(text);
+            Printer.Print(intNum);
+            Printer.Print(doubNum);
         }
+    }
+    class Printer
+    {
+        public static void Print<A>(A info)
+        {
+            Console.WriteLine("Showing " + info);
+        }
+
+
     }
 
 }
-/*You have a robot-barman and his goal is to neatly arrange drinks on the shelves of the bar. He is very smart and takes as many drinks as are necessary to evenly distribute them on the shelves, but he still has problems with division.
-
-The program installed in the robot takes the number of drinks and the number of the shelves as input.
-Complete the program to evenly distribute the drinks on shelves: by dividing the number of drinks by the number of shelves and outputting the result.
-The program must also, handle those two possible problems:
-1. the divider (the number of shelves) should never be zero
-2. both inputs should be integers.
-For the first exception, the program should output "At least 1 shelf" and for the second, "Please insert an integer".
+/*You are writing a program that can output the value of a variable of any type. It takes a string, an integer, and a double value as input and then it should output them.
+Create a generic method Print for a Printer class to execute the given calls correctly.
 
 Sample Input
-6
-two
+Hello
+14
+7.6
 
 Sample Output
-Please insert an integer
-
-*/
+Showing Hello
+Showing 14
+Showing 7.6*/
