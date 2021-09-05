@@ -11,36 +11,39 @@ namespace project
     {
         static void Main(string[] args)
         {
-            string text = Console.ReadLine();
-            int intNum = Convert.ToInt32(Console.ReadLine());
-            double doubNum = Convert.ToDouble(Console.ReadLine());
 
+            Elems<string> elems1 = new Elems<string>();
+            elems1.Add("John", "Tamara", "David");
+            elems1.Show();
 
-            Printer.Print(text);
-            Printer.Print(intNum);
-            Printer.Print(doubNum);
+            Console.WriteLine();
+
+            Elems<int> elems2 = new Elems<int>();
+            elems2.Add(5, 14, 13);
+            elems2.Show();
+
         }
     }
-    class Printer
+    //make this class generic
+    class Elems<A>
     {
-        public static void Print<A>(A info)
+        public A[] elements = new A[3];
+
+        public void Add(A elem1, A elem2, A elem3)
         {
-            Console.WriteLine("Showing " + info);
+            elements[0] = elem1;
+            elements[1] = elem2;
+            elements[2] = elem3;
         }
 
-
+        public void Show()
+        {
+            foreach (A item in elements)
+            {
+                Console.Write(item + " ");
+            }
+        }
     }
-
 }
-/*You are writing a program that can output the value of a variable of any type. It takes a string, an integer, and a double value as input and then it should output them.
-Create a generic method Print for a Printer class to execute the given calls correctly.
-
-Sample Input
-Hello
-14
-7.6
-
-Sample Output
-Showing Hello
-Showing 14
-Showing 7.6*/
+/*The class Elems creates a 3-sized array of integers, defines Add() and Show() methods to store the elements into the array, and shows them separated by a space.
+Modify the class to make it generic to execute the same actions with string type, given in the Main function.*/
