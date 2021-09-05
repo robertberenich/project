@@ -11,44 +11,41 @@ namespace project
     {
         static void Main(string[] args)
         {
-            HashSet<string> candidates = new HashSet<string>();
+            double discount = Convert.ToInt32(Console.ReadLine());
 
-            candidates.Add("John");
-            candidates.Add("Amelie");
-            candidates.Add("Tom");
-            candidates.Add("Richard");
-            candidates.Add("Barbara");
-            candidates.Add("Susan");
-            candidates.Add("Charles");
-            candidates.Add("Daniel");
-            candidates.Add("Tamara");
-            candidates.Add("Donald");
+            Dictionary<string, int> coffee = new Dictionary<string, int>();
+            coffee.Add("Americano", 50);
+            coffee.Add("Latte", 70);
+            coffee.Add("Flat White", 60);
+            coffee.Add("Espresso", 60);
+            coffee.Add("Cappuccino", 80);
+            coffee.Add("Mocha", 90);
 
-            HashSet<string> hiring = new HashSet<string>();
-
-            while (hiring.Count < 3)
+            string[] s = coffee.Keys.ToArray();
+            foreach (string i in s)
             {
-                string hire = Console.ReadLine();
-                hiring.Add(hire);
-
+                double num = coffee[i];
+                double res = num - (num * (discount / 100));
+                coffee[i] = (int)Math.Ceiling(res);
             }
-            if (hiring.IsSubsetOf(candidates))
+            foreach (string item in coffee.Keys)
             {
-                Console.WriteLine("Starting hiring process");
+                Console.WriteLine(item + ": " + coffee[item]);
             }
-            else Console.WriteLine("Something is wrong");
-
         }
     }
 }
-/*We are hiring programmers on our team. There are 10 candidates, and we need to choose 3 of them.
-In the program you are given, you have 10 candidates in a hash set. You need to take 3 names as input, add them to a new hiring hash set and check if they are present in our candidates set.
-If they are, the program should output "Starting hiring process", otherwise, "Something is wrong".
+/*A coffee shop manager is running a promotion and wants to offer a discount for coffee drinks.
+The program you are given takes the discount value as input and defines a dictionary, where the names of the coffee drinks are set as keys, and their prices are set as values.
+Write a program to discount all of the prices and output a new price list in the format shown below.
 
 Sample Input
-John
-Susan
-Daniel
+10
 
 Sample Output
-Starting hiring process*/
+Americano: 45
+Latte: 63
+Flat White: 54
+Espresso: 54
+Cappuccino: 72
+Mocha: 81*/
