@@ -11,31 +11,41 @@ namespace project
 	{
 		static void Main(string[] args)
 		{
-			SortedList<string, int> exam = new SortedList<string, int>();
+			Stack<int> evenNums = new Stack<int>();
 
-			exam.Add("Tom", 59);
-			exam.Add("Robert", 95);
-			exam.Add("Sophie", 72);
-			exam.Add("Maria", 68);
-			exam.Add("Nick", 84);
+			evenNums.Push(4);
+			evenNums.Push(8);
+			evenNums.Push(6);
 
-			foreach (string item in exam.Keys)
+			int num = Convert.ToInt32(Console.ReadLine());
+
+			evenNums.Push(num);
+
+			Console.WriteLine("Checking the last number: " + num);
+
+			if (!(num % 2 == 0))
 			{
-				if (exam[item] < 70)
-				{
-					Console.WriteLine(item + ":" + " Failed");
-				}
-				else Console.WriteLine(item + ":" + " Passed");
+				Console.WriteLine(num + ": Removed");
+				evenNums.Pop();
 			}
-
+			foreach (int item in evenNums)
+			{
+				Console.Write(item + " ");
+			}
 		}
 	}
 }
-/*There are 5 students in a class, and each needs to score at least 70 points to pass the exam.
-The program you are given defines the sorted list and stores the names of the students as keys and the corresponding scores as values.
-Complete the program to show the results of the exam.
+/*The program you are given defines the evenNums stack and pushes 3 even numbers (6, 8 and 4) onto it.
+The 4th number is taken from the user and also pushed. But we need to check whether it is also an even number.
+Complete the program to perform that check process, and if the last pushed number N isn't even, remove it from stack and output "N: Removed" (see sample output).
+At the end, output all the elements of the stack, separated by spaces.
 
-Explanation
-For example, if Tom passed the exam, the program should output "Tom: Passed", and if he didn't, "Tom: Failed".
-The result of each student should be output on a new lane.
+Sample Input
+1
+
+Sample Output
+Checking the last number: 1
+1: Removed
+6 8 4
+
 */
