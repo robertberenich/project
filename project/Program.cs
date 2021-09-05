@@ -11,51 +11,59 @@ namespace project
     {
         static void Main(string[] args)
         {
-            Figure rectangle = new Rectangle(5, 6);
-            Figure triangle = new Triangle(4, 8, 3);
+            string color = Console.ReadLine();
+            string equipment = Console.ReadLine();
 
-            Console.WriteLine(rectangle.Perimeter());
-            Console.WriteLine(triangle.Perimeter());
+            Car car = new Car(color, equipment);
+
+            car.GetColor();
+            car.GetEquipment();
         }
     }
-    abstract class Figure
-    {
-        public abstract int Perimeter();
 
+    public interface IColor
+    {
+        void GetColor();
     }
-    class Rectangle : Figure
-    {
-        public int width;
-        public int height;
-        public Rectangle(int width, int height)
-        {
-            this.width = width;
-            this.height = height;
-        }
-        public override int Perimeter()
-        {
-            return width * 2 + 2 * height;
-        }
 
+    public interface IEquipment
+    {
+        void GetEquipment();
     }
-    class Triangle : Figure
+
+
+    public class Car
     {
-        public int side1;
-        public int side2;
-        public int side3;
-        public Triangle(int s1, int s2, int s3)
+        public string color;
+        public string equipment;
+
+        public Car(string color, string equipment)
         {
-            this.side1 = s1;
-            this.side2 = s2;
-            this.side3 = s3;
-        }
-        public override int Perimeter()
-        {
-            return side1 + side2 + side3;
+            this.color = color;
+            this.equipment = equipment;
         }
 
+
+        public void GetColor()
+        {
+            Console.WriteLine("Color: " + this.color);
+        }
+
+        public void GetEquipment()
+        {
+            Console.WriteLine("Equipment: " + this.equipment);
+        }
     }
 }
-/*The program you are given defines abstract class Figure and derives Rectangle and Triangle classes from it.
-Add an abstract method Perimeter to class Figure, than override it in derived classes to calculate perimeters of Rectangle and Triangle objects.
+/*On the car dealership website, you can pre-order a car by specifying its color and equipment.
+The program you are given takes the color and the equipment type as input and pass them to constructor of already declared Car class.
+Implement IColor and IEquipment interfaces for the Car class and reimplement their GetColor and GetEquipment methods inside it. Each of them should output corresponding message about color/equipment (see sample output).
+
+Sample Input
+Blue
+Standard
+
+Sample Output
+Color: Blue
+Equipment: Standard
 */
