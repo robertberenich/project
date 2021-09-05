@@ -11,39 +11,35 @@ namespace project
     {
         static void Main(string[] args)
         {
+            int numOfPlayers = Convert.ToInt32(Console.ReadLine());
 
-            Elems<string> elems1 = new Elems<string>();
-            elems1.Add("John", "Tamara", "David");
-            elems1.Show();
-
-            Console.WriteLine();
-
-            Elems<int> elems2 = new Elems<int>();
-            elems2.Add(5, 14, 13);
-            elems2.Show();
-
-        }
-    }
-    //make this class generic
-    class Elems<A>
-    {
-        public A[] elements = new A[3];
-
-        public void Add(A elem1, A elem2, A elem3)
-        {
-            elements[0] = elem1;
-            elements[1] = elem2;
-            elements[2] = elem3;
-        }
-
-        public void Show()
-        {
-            foreach (A item in elements)
+            List<int> scores = new List<int>();
+            int count = 0;
+            while (count < numOfPlayers)
+            {
+                int score = Convert.ToInt32(Console.ReadLine());
+                scores.Add(score);
+                count++;
+            }
+            scores.Sort();
+            foreach (int item in scores)
             {
                 Console.Write(item + " ");
             }
+            //sort the list and output elements
+
         }
     }
 }
-/*The class Elems creates a 3-sized array of integers, defines Add() and Show() methods to store the elements into the array, and shows them separated by a space.
-Modify the class to make it generic to execute the same actions with string type, given in the Main function.*/
+/*You need to write a program for the game to sort player scores.
+The program you are given takes N number as input, which represents the number of players, and defines a score list.
+Complete the program to take N count of numbers (the scores) as input, store them in a scores list, sort and output them, each separated by a space.
+
+Sample Input
+3
+12
+4
+5
+
+Sample Output
+4 5 12*/
