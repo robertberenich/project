@@ -11,63 +11,50 @@ namespace project
     {
         static void Main(string[] args)
         {
-            Draw pencil = new Draw();
-            Draw brush = new Brush();
-            Draw spray = new Spray();
+            int length = Convert.ToInt32(Console.ReadLine());
+            int width = Convert.ToInt32(Console.ReadLine());
+            int height = Convert.ToInt32(Console.ReadLine());
 
-            pencil.StartDraw();
-            brush.StartDraw();
-            spray.StartDraw();
+            Cuboid cuboid = new Cuboid(length, width, height);
 
+            Console.WriteLine("Volume: " + cuboid.Volume());
+            Console.WriteLine("Perimeter: " + cuboid.Perimeter());
         }
     }
-
-    /*
-    Draw => "Using pencil"
-    Brush => "Using brush"
-    Spray => "Using spray"
-    */
-
-    public interface IDraw
+    struct Cuboid
     {
-        void StartDraw();
-    }
+        public int length;
+        public int width;
+        public int height;
 
-    class Draw : IDraw
-    {
-        public virtual void StartDraw()
+        public Cuboid(int x, int y, int z)
         {
-            Console.WriteLine("Using pencil");
+            length = x;
+            width = y;
+            height = z;
         }
-    }
 
-    //inherit this class from the class Draw
-    class Brush : Draw
-    {
-        public override void StartDraw()
+
+        public int Volume()
         {
-            Console.WriteLine("Using brush");
+            int volume = this.height * this.length * this.width;
+            return volume;
         }
 
-    }
-
-    //inherit this class from the class Draw
-    class Spray : Draw
-    {
-        public override void StartDraw()
+        public int Perimeter()
         {
-            Console.WriteLine("Using spray");
+            int perimeter = 4 * (this.height + this.length + this.width);
+            return perimeter;
         }
-
     }
 }
-/*You are creating a drawing application and currently have only 1 tool - a pencil. You want to add brush and spray to the drawing toolbar.
-The program you are given declares an IDraw interface with the StartDraw() method, and class Draw, which performs pencil drawing by implementing the IDraw interface. It outputs "Using pencil".
-Complete the given Brush and Spray classes by
-- inheriting them from class Draw
-- implementing the StartDraw() method for each tool, in order to output
-"Using brush" for Brush, or
-"Using spray" for Spray.
+/*A cuboid is a three-dimensional shape with a length, width, and a height.
+The program you are given takes takes those dimensions as inputs, defines Cuboid struct and creates its object.
+Complete the program by creating a constructor, which will take the length, the width, and the height as parameters and assign them to its struct members.
+Also complete Volume() and Perimeter() methods inside the struct, to calculate and return them, so that the given methods calls work correctly.
 
-The Draw objects and their method calls are provided in Main().
+Sample Input
+5
+4
+5
 */
