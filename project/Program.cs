@@ -7,39 +7,35 @@ using System.Threading.Tasks;
 
 namespace project
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            int numOfPlayers = Convert.ToInt32(Console.ReadLine());
+	class Program
+	{
+		static void Main(string[] args)
+		{
+			SortedList<string, int> exam = new SortedList<string, int>();
 
-            List<int> scores = new List<int>();
-            int count = 0;
-            while (count < numOfPlayers)
-            {
-                int score = Convert.ToInt32(Console.ReadLine());
-                scores.Add(score);
-                count++;
-            }
-            scores.Sort();
-            foreach (int item in scores)
-            {
-                Console.Write(item + " ");
-            }
-            //sort the list and output elements
+			exam.Add("Tom", 59);
+			exam.Add("Robert", 95);
+			exam.Add("Sophie", 72);
+			exam.Add("Maria", 68);
+			exam.Add("Nick", 84);
 
-        }
-    }
+			foreach (string item in exam.Keys)
+			{
+				if (exam[item] < 70)
+				{
+					Console.WriteLine(item + ":" + " Failed");
+				}
+				else Console.WriteLine(item + ":" + " Passed");
+			}
+
+		}
+	}
 }
-/*You need to write a program for the game to sort player scores.
-The program you are given takes N number as input, which represents the number of players, and defines a score list.
-Complete the program to take N count of numbers (the scores) as input, store them in a scores list, sort and output them, each separated by a space.
+/*There are 5 students in a class, and each needs to score at least 70 points to pass the exam.
+The program you are given defines the sorted list and stores the names of the students as keys and the corresponding scores as values.
+Complete the program to show the results of the exam.
 
-Sample Input
-3
-12
-4
-5
-
-Sample Output
-4 5 12*/
+Explanation
+For example, if Tom passed the exam, the program should output "Tom: Passed", and if he didn't, "Tom: Failed".
+The result of each student should be output on a new lane.
+*/
