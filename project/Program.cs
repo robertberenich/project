@@ -11,33 +11,40 @@ namespace project
     {
         static void Main(string[] args)
         {
-            string[] tours = { "England", "Spain", "Italy", "Portugal", "France" };
-            int choice = Convert.ToInt32(Console.ReadLine());
             try
             {
-                Console.WriteLine($"{tours[choice]}");
-            }
-            catch
-            {
-                Console.WriteLine("Wrong number");
-            }
-            finally
-            {
-                Console.WriteLine("Goodbye");
+                int drinks = Convert.ToInt32(Console.ReadLine());
+                int shelves = Convert.ToInt32(Console.ReadLine());
+                int res = drinks / shelves;
+                Console.WriteLine(res);
             }
 
+            catch (DivideByZeroException a)
+            {
+                Console.WriteLine("At least 1 shelf");
+            }
+            catch (FormatException a)
+            {
+                Console.WriteLine("Please insert an integer");
+            }
         }
     }
 
 }
-/*A tour operator offers package holidays in England, Spain, Italy, Portugal and France.
-The program you are given defines an array with those options and takes N number as input.
-Write a program to output the package option with N index. If the number is out of range, program should output "Wrong number". Regardless of the option results, the program should output "Goodbye" at the end.
+/*You have a robot-barman and his goal is to neatly arrange drinks on the shelves of the bar. He is very smart and takes as many drinks as are necessary to evenly distribute them on the shelves, but he still has problems with division.
+
+The program installed in the robot takes the number of drinks and the number of the shelves as input.
+Complete the program to evenly distribute the drinks on shelves: by dividing the number of drinks by the number of shelves and outputting the result.
+The program must also, handle those two possible problems:
+1. the divider (the number of shelves) should never be zero
+2. both inputs should be integers.
+For the first exception, the program should output "At least 1 shelf" and for the second, "Please insert an integer".
 
 Sample Input
-2
+6
+two
 
 Sample Output
-Italy
-Goodbye
+Please insert an integer
+
 */
