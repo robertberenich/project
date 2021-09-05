@@ -7,45 +7,49 @@ using System.Threading.Tasks;
 
 namespace project
 {
-	class Program
-	{
-		static void Main(string[] args)
-		{
-			Stack<int> evenNums = new Stack<int>();
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Queue<int> q = new Queue<int>();
 
-			evenNums.Push(4);
-			evenNums.Push(8);
-			evenNums.Push(6);
+            while (q.Count < 3)
+            {
+                int num = Convert.ToInt32(Console.ReadLine());
+                q.Enqueue(num);
+            }
 
-			int num = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Queue: ");
+            foreach (int i in q)
+                Console.Write(i + " ");
 
-			evenNums.Push(num);
+            Console.WriteLine();
 
-			Console.WriteLine("Checking the last number: " + num);
+            int[] newArr = q.ToArray();
+            Array.Sort(newArr);
 
-			if (!(num % 2 == 0))
-			{
-				Console.WriteLine(num + ": Removed");
-				evenNums.Pop();
-			}
-			foreach (int item in evenNums)
-			{
-				Console.Write(item + " ");
-			}
-		}
-	}
+            Console.Write("Sorted: ");
+            foreach (int item in newArr)
+            {
+                Console.Write(item + " ");
+            }
+
+            //your code goes here
+
+        }
+    }
 }
-/*The program you are given defines the evenNums stack and pushes 3 even numbers (6, 8 and 4) onto it.
-The 4th number is taken from the user and also pushed. But we need to check whether it is also an even number.
-Complete the program to perform that check process, and if the last pushed number N isn't even, remove it from stack and output "N: Removed" (see sample output).
-At the end, output all the elements of the stack, separated by spaces.
+/*Queue
+
+
+Write a program that will take 3 numbers as input and store them in a defined queue.
+Also, add code to output the sorted sequence of elements in the queue, separated by a space.
 
 Sample Input
-1
+6
+3
+14
 
 Sample Output
-Checking the last number: 1
-1: Removed
-6 8 4
-
-*/
+Queue: 6 3 14
+Sorted: 3 6 14*/
