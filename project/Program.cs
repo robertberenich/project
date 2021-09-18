@@ -7,48 +7,47 @@ namespace linq
 {
     class Program
     {
+        public string Name { get; set; }
+        public int Id { get; set; }
         static void Main(string[] args)
         {
-            int hi1 = 5;
-            string hi2 = "Robert";
+            Func<int, int> square = x =>
+            {
+                int temp = x * x + x;
+                return temp;
+            };
+            Console.WriteLine(square(5));
 
-            hi2.hiExtension();
-            hi1.hiExtension();
-            Console.WriteLine("==================================");
-            //vs instance method
-            TestClass hi1TestClass = new TestClass();
-            TestClass hi2TestClass = new TestClass();
-            hi1TestClass.hiInstanceMethod(hi1);
-            hi2TestClass.hiInstanceMethod(hi2);
-            Console.WriteLine("==================================");
-            //vs static method
-            TestClassStatic.hiStaticMethod(hi1);
-            TestClassStatic.hiStaticMethod(hi2);
-            Console.WriteLine("==================================");
 
+
+            wut[] developers = new wut[3];
+            for (int i = 0; i < 3; i++)
+            {
+                developers[i] = new wut();
+            }
+            developers[0].Name= "Scott";
+            developers[1].Name = "Alex";
+            developers[2].Name = "John";
+
+            foreach (var employee in developers.OrderBy(e => e.Name))
+            {
+                Console.WriteLine(employee.Name);
+            }
+
+            foreach (var employee in developers.Where(StartsWithS))
+            {
+
+            }
         }
 
-    }
-    public static class ExtentionTest
-    {
-        public static void hiExtension<T>(this T a)
+        private static bool StartsWithS(wut employee)
         {
-            Console.WriteLine("Extension Hi " + a);
+            return employee.Name.StartsWith("S");
         }
     }
-
-    public class TestClass
+    class wut
     {
-        public void hiInstanceMethod<T>(T a)
-        {
-            Console.WriteLine("Instance method hi " + a);
-        }
+        public string Name { get; set; }
+        public int Id { get; set; }
     }
-    public static class TestClassStatic
-    {
-        public static void hiStaticMethod<T>(T a)
-        {
-            Console.WriteLine("Static method hi " + a);
-        }
-    }
-}
+}   
