@@ -99,7 +99,37 @@ namespace linq
                 {
                     Manufacturer = m,
                     Cars = g
-                });
+                })
+                .OrderBy(m => m.Manufacturer.Name);
+
+            var queryMaxMinAvg =
+                cars.GroupBy(c => c.Manufacturer)
+                .Select(c => new
+                {
+                    Name = c.Key,
+                    Max = c.Max(c => c.Combined),
+                    Min = c.Min(c => c.Combined),
+                    Avg = c.Average(c => c.Combined),
+                })
+                .OrderByDescending(c => c.Max)
+                .ThenBy(c => c.Name);
+
+            foreach (var item in queryMaxMinAvg)
+            {
+                Console.WriteLine(item.Name);
+                Console.WriteLine($"\tMax: {item.Max}");
+                Console.WriteLine($"\tMin: {item.Min}");
+                Console.WriteLine($"\tAvg: {item.Avg}");
+            }
+
+            //foreach (var item in queryJoingGroup)
+            //{
+            //    Console.WriteLine(item.Manufacturer.Headquarters);
+            //    foreach (var i2 in item.Cars.OrderByDescending(c => c.Combined).Take(2))
+            //    {
+            //        Console.WriteLine(i2.Name);
+            //    }
+            //}
 
             //foreach (var item in queryGroup)
             //{
