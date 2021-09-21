@@ -104,16 +104,21 @@ namespace linq
 
             var queryMaxMinAvg =
                 cars.GroupBy(c => c.Manufacturer)
-                .Select(c => new
+                .Select(grouped =>
                 {
-                    Name = c.Key,
-                    Max = c.Max(c => c.Combined),
-                    Min = c.Min(c => c.Combined),
-                    Avg = c.Average(c => c.Combined),
-                })
-                .OrderByDescending(c => c.Max)
-                .ThenBy(c => c.Name);
+                    var result = grouped.Aggregate(new CarStatistics(),
+                                            (acc, grouped) => acc.Accumulate(grouped),
+                                            (acc) => acc.Compute());
+                    return new
+                    {
+                        Name = grouped.Key,
+                        Avg = result.Average,
+                        Max = result.Max,
+                        Min = result.Min
 
+                    };
+                })
+                .OrderByDescending(res => res.Max);
             foreach (var item in queryMaxMinAvg)
             {
                 Console.WriteLine(item.Name);
@@ -140,7 +145,7 @@ namespace linq
             //    }
             //}
 
-            
+
         }
 
         private static List<Car> ReadAllfuel(string path)
