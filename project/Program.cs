@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace linq
+namespace project
 {
     class Program
     {
@@ -20,10 +20,10 @@ namespace linq
 
 
 
-            wut[] developers = new wut[3];
+            Parametr[] developers = new Parametr[3];
             for (int i = 0; i < 3; i++)
             {
-                developers[i] = new wut();
+                developers[i] = new Parametr();
             }
             developers[0].Name= "Scott";
             developers[1].Name = "Alex";
@@ -38,14 +38,27 @@ namespace linq
             {
 
             }
+
+            int[,] arr = new int[3, 5] { { 1, 2, 3, 4, 5 }, { 6, 7, 8, 9, 10 }, { 11, 12, 13, 14, 15 } };
+            var count = 0;
+            var smt = arr.GetLength(1);
+            for (int i = 0; i <arr.GetLength(0); i++)
+            {
+                for (int j = 0; j < arr.GetLength(1); j++)
+                {
+                    count = count + arr[i, j];
+                }
+                
+            }
+            Console.WriteLine(count);
         }
 
-        private static bool StartsWithS(wut employee)
+        private static bool StartsWithS(Parametr employee)
         {
             return employee.Name.StartsWith("S");
         }
     }
-    class wut
+    class Parametr
     {
         public string Name { get; set; }
         public int Id { get; set; }

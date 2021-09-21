@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
@@ -11,10 +12,40 @@ namespace xml
         static void Main(string[] args)
         {
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
-            XlmCreate();
+            //XlmCreate();
+            //QueryXml();
+            InsertData();
+            QueryData();
 
-            QueryXml();
+        }
 
+        private static void QueryData()
+        {
+            var db = new CarDb();
+
+            var query =
+                db.Cars.OrderByDescending(d => d.Combined)
+                .ThenBy(d => d.Name);
+            foreach (var item in query.Take(10))
+            {
+                Console.WriteLine(item.Name + " " + item.Combined);
+            }
+        }
+
+        private static void InsertData()
+        {
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<CarDb>());
+            var cars = ReadAllFuel("fuel.csv");
+            var db = new CarDb();
+
+            if(!db.Cars.Any())
+            {
+                foreach (var car in cars)
+                {
+                    db.Cars.Add(car); //doesnt insert data into DB
+                }
+                db.SaveChanges();
+            }
         }
 
         private static void QueryXml()
