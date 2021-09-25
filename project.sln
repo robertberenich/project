@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "query", "query\query.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "linq", "linq\linq.csproj", "{B8606B32-75A5-48A8-A08E-CBC742510E76}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xml", "xml\xml.csproj", "{B9A0FCE4-AD97-4D81-B5AB-98AB6FD3B675}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "xml", "xml\xml.csproj", "{B9A0FCE4-AD97-4D81-B5AB-98AB6FD3B675}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp2", "ConsoleApp2\ConsoleApp2.csproj", "{1B8A1B73-6BDC-4115-95AB-D2281F30B90E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{B9A0FCE4-AD97-4D81-B5AB-98AB6FD3B675}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9A0FCE4-AD97-4D81-B5AB-98AB6FD3B675}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9A0FCE4-AD97-4D81-B5AB-98AB6FD3B675}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B8A1B73-6BDC-4115-95AB-D2281F30B90E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B8A1B73-6BDC-4115-95AB-D2281F30B90E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B8A1B73-6BDC-4115-95AB-D2281F30B90E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B8A1B73-6BDC-4115-95AB-D2281F30B90E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

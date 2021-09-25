@@ -16,6 +16,7 @@ namespace xml
             //QueryXml();
             InsertData();
             QueryData();
+            
 
         }
 
@@ -26,10 +27,13 @@ namespace xml
             var query =
                 db.Cars.OrderByDescending(d => d.Combined)
                 .ThenBy(d => d.Name);
+                
             foreach (var item in query.Take(10))
             {
                 Console.WriteLine(item.Name + " " + item.Combined);
+                
             }
+
         }
 
         private static void InsertData()
